@@ -15,6 +15,11 @@ import {
   fetchCustomers 
 } from './apiCalls';
 
+import {
+  displayCustomerBookings,
+  displayCustomerName
+} from './domUpdates.js';
+
 // Fetched Data
 
 let bookingsData = [];
@@ -37,6 +42,8 @@ window.addEventListener('load', () => {
               customersData = data.customers;
               console.log(customersData)
               currentCustomer = customersData[0]
+              displayCustomerName(currentCustomer)
+              displayCustomerBookings(currentCustomer, bookingsData)
               // currentCustomer = createRandomCustomer(customersData)
               // displayBookings(currentCustomer, bookingsData, savedbookings)
             }
