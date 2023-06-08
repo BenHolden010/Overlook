@@ -40,10 +40,10 @@ window.addEventListener('load', () => {
               roomsData = data.rooms;
             } else if (response.url.includes('/customers')) {
               customersData = data.customers;
-              console.log(customersData)
-              currentCustomer = customersData[0]
+              // console.log(customersData)
+              currentCustomer = customersData[2]
               displayCustomerName(currentCustomer)
-              displayCustomerBookings(currentCustomer, bookingsData)
+              displayCustomerBookings(currentCustomer, bookingsData, roomsData)
               // currentCustomer = createRandomCustomer(customersData)
               // displayBookings(currentCustomer, bookingsData, savedbookings)
             }
