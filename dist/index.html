@@ -9,9 +9,12 @@
 <body>
   <section class="header">
     <img class="header__turingLogo" src="./images/turing-logo.png" alt="turing logo">
-    <div class="header__title">The Overlook Resort</div>
+    <h1 class="header__title">The Overlook Resort</h1>
+    <div>
       <section class="header__name"></section>
-    </section>
+      <button class="view__bookings">View Bookings</button>
+    </div>
+  </section>
   <section  class="main">
     <section class="main__filter">
       <p>Check Availavility:</p>
@@ -26,6 +29,7 @@
         <input type='radio' class='junior-suite' id="junior suite" name="option">Junior Suite</input>
         <input type='radio' class='suite' id="suite" name="option">Suite</input>
         <input type='radio' class='residential-suite' id="residential suite" name="option">Residential Suite</input>
+        <input type='radio' class='view-all' id="view all" name="option">View All</input>
         </p>
       </div>
     </section>
@@ -33,10 +37,7 @@
     <section class="main__bookingsDisplay">
       <!-- bookings will display here -->
     </section>
-    <section class="sortByDate__bookingsDisplay">
-      <!-- bookings will display here -->
-    </section>
-    <section class="sortByType__bookingsDisplay">
+    <section class="filter-bookings-Display">
       <!-- bookings will display here -->
     </section>
   </section>

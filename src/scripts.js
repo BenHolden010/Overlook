@@ -16,10 +16,12 @@ import {
 } from './apiCalls';
 
 import {
+  viewSorted,
   searchButton,
   viewFilteredResults,
   displayCustomerBookings,
-  displayCustomerName
+  displayCustomerName,
+  addBooking
 } from './domUpdates.js';
 
 // Fetched Data
@@ -43,7 +45,7 @@ window.addEventListener('load', () => {
             } else if (response.url.includes('/customers')) {
               customersData = data.customers;
               // console.log(customersData)
-              currentCustomer = customersData[2]
+              currentCustomer = customersData[1]
               displayCustomerName(currentCustomer)
               displayCustomerBookings(currentCustomer, bookingsData, roomsData)
               // currentCustomer = createRandomCustomer(customersData)
@@ -63,6 +65,9 @@ window.addEventListener('load', () => {
 
 searchButton.addEventListener('click', function (event) {
   viewFilteredResults(event)})
+
+viewSorted.addEventListener('click', function (event) {
+  addBooking(event)})
 
 export {
 bookingsData,

@@ -37,7 +37,7 @@ display: flex;
 justify-content: center;
 }
 
-.sortByDate__bookingsDisplay {
+.filter-bookings-Display {
   display: flex;
   width: 50%;
   align-items: center;
@@ -45,9 +45,17 @@ justify-content: center;
   justify-content: space-around;
 }
 
+.filter__room {
+  background-color: white;
+  border-radius: 1em;
+  margin: 0.5em
+}
+
 button {
-  background-color: rgb(199, 82, 82);
-  margin: .5em
+  background-color: rgb(255, 255, 255);
+  margin: .5em;
+  border-radius: .5em;
+  border: solid black 1px;
 }
 
 .hidden {

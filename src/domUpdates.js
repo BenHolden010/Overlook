@@ -2,11 +2,15 @@ import { bookingsData, roomsData, customersData, currentCustomer } from "./scrip
 import { roomsAvailableByDate } from "./functions/roomsAvailableByDate.js";
 import { sortByRoomType } from "./functions/sortByRoomType.js";
 
+// querySelectors
+
 const headerName = document.querySelector('.header__name');
 const displayBookings = document.querySelector('.main__bookingsDisplay');
-const viewSorted = document.querySelector('.sortByDate__bookingsDisplay');
+const viewSorted = document.querySelector('.filter-bookings-Display');
 const searchButton = document.querySelector('.search-button');
 const searchInput = document.querySelector('.home__searchInput');
+
+// functions
 
 const show = (names) => {
   names.forEach((name) => name.classList.remove('hidden'));
@@ -22,21 +26,20 @@ function viewFilteredResults(event){
   hide([displayBookings])
   show([viewSorted])
   viewSorted.innerHTML = ''
-  if (document.getElementById('single room').checked){
-    availableRooms = sortByRoomType('single room', availableRooms)
-  } else if (document.getElementById('junior suite').checked){
-    availableRooms = sortByRoomType('junior suite', availableRooms)
-  } else if (document.getElementById('suite').checked){
-    availableRooms = sortByRoomType('suite', availableRooms)
-  } else if (document.getElementById('residential suite').checked){
-    availableRooms = sortByRoomType('residential suite', availableRooms)
-  }
+  roomsData.forEach(room=>{
+    if (document.getElementById(room.roomType).checked){
+      availableRooms = sortByRoomType(room.roomType, availableRooms)
+    } 
+  })
   availableRooms.forEach(room=>{
     viewSorted.innerHTML +=         
-    `<button class="filtered__room" id="${room.number}">
-    <p class='filtered__text' id="${room.number}">${room.numBeds} ${room.bedSize} bed ${room.roomType}<br>
+    `<section class="filtered__room" style= "background-color: rgb(210, 71, 210);
+    border-radius: 1em; margin: 0.5em; width: 12em; display: flex;
+    align-items: center; flex-direction: column;" >
+    <p class='filtered__text'>${room.numBeds} ${room.bedSize} bed ${room.roomType}<br>
     cost per night: $${room.costPerNight}</p>
-    </button>`
+    <button class="book__recipe" id="${room.number}">Book</button>
+    </section>`
   })
 }
 
@@ -57,6 +60,15 @@ function displayCustomerBookings(currentCustomer, bookingsData, roomsData){
   displayBookings.innerHTML += `Total cost of your stay is $${total}`
 }
 
+function addBooking(event){
+  console.log(event.target.id)
+  // roomsData.forEach(room=>{
+  //   if (event.target.id === room.number){
+  //     bookingsData.push()
+  //   }
+  // })
+  }
+
 function totalAmount(customer, bookings, rooms){
   let total = bookings.filter(booking=> customer.id === booking.userID).reduce((acc, booking)=>{
     rooms.forEach(room=>{
@@ -70,7 +82,9 @@ function totalAmount(customer, bookings, rooms){
 }
 
 export {
+  viewSorted,
   searchButton,
+  addBooking,
   viewFilteredResults,
   displayCustomerName,
   displayCustomerBookings,
