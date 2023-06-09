@@ -13,25 +13,32 @@
       <section class="header__name"></section>
     </section>
   <section  class="main">
-    <section>
+    <section class="main__filter">
       <p>Check Availavility:</p>
-      <p>Select a date:</p>
-      <input class="home__searchInput" type="search" name="s" placeholder="YYYY/MM/DD" required="">
-      <p>Select a room type:</p>
-      <input type='radio' class='room-type' id="single room" name="option">Single Room</input>
-      <input type='radio' class='room-type2' id="junior suite" name="option">Junior Suite</input>
-      <input type='radio' class='room-type3' id="suite" name="option">Suite</input>
-      <input type='radio' class='room-type4' id="residential-suite" name="option">Residential Suite</input>
+      <div>
+        <p>Select a date:
+        <input class="home__searchInput" type="search" name="s" placeholder="YYYY/MM/DD" required="">
+        </p>
+      </div>
+      <div>
+        <p>Select a room type:
+        <input type='radio' class='room-type' id="single room" name="option">Single Room</input>
+        <input type='radio' class='room-type2' id="junior suite" name="option">Junior Suite</input>
+        <input type='radio' class='room-type3' id="suite" name="option">Suite</input>
+        <input type='radio' class='room-type4' id="residential-suite" name="option">Residential Suite</input>
+        </p>
+      </div>
     </section>
-    <secrtion class="main__bookingsDisplay">
+    <button class="search-button">Search 🔍</button>
+    <section class="main__bookingsDisplay">
       <!-- bookings will display here -->
-    </secrtion>
-    <secrtion class="sortByDate__bookingsDisplay">
+    </section>
+    <section class="sortByDate__bookingsDisplay">
       <!-- bookings will display here -->
-    </secrtion>
-    <secrtion class="sortByType__bookingsDisplay">
+    </section>
+    <section class="sortByType__bookingsDisplay">
       <!-- bookings will display here -->
-    </secrtion>
+    </section>
   </section>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>

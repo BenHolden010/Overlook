@@ -16,6 +16,8 @@ import {
 } from './apiCalls';
 
 import {
+  searchButton,
+  viewFilteredResults,
   displayCustomerBookings,
   displayCustomerName
 } from './domUpdates.js';
@@ -58,6 +60,9 @@ window.addEventListener('load', () => {
     });
   });
 });
+
+searchButton.addEventListener('click', function (event) {
+  viewFilteredResults(event)})
 
 export {
 bookingsData,
