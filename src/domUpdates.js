@@ -1,6 +1,8 @@
 import { bookingsData, roomsData, customersData, currentCustomer } from "./scripts.js"
 import { roomsAvailableByDate } from "./functions/roomsAvailableByDate.js";
 import { sortByRoomType } from "./functions/sortByRoomType.js";
+import { createBooking } from "./functions/createBooking.js";
+import { addBookingToAPI } from './apiCalls';
 
 // querySelectors
 
@@ -38,7 +40,7 @@ function viewFilteredResults(event){
     align-items: center; flex-direction: column;" >
     <p class='filtered__text'>${room.numBeds} ${room.bedSize} bed ${room.roomType}<br>
     cost per night: $${room.costPerNight}</p>
-    <button class="book__recipe" id="${room.number}">Book</button>
+    <button class="make-booking" id="${room.number}">Book</button>
     </section>`
   })
 }
@@ -61,13 +63,8 @@ function displayCustomerBookings(currentCustomer, bookingsData, roomsData){
 }
 
 function addBooking(event){
-  console.log(event.target.id)
-  // roomsData.forEach(room=>{
-  //   if (event.target.id === room.number){
-  //     bookingsData.push()
-  //   }
-  // })
-  }
+  let newBooking = createBooking(currentCustomer, searchInput.value, parseInt(event.target.id))
+}
 
 function totalAmount(customer, bookings, rooms){
   let total = bookings.filter(booking=> customer.id === booking.userID).reduce((acc, booking)=>{
@@ -82,9 +79,11 @@ function totalAmount(customer, bookings, rooms){
 }
 
 export {
+  searchInput,
   viewSorted,
   searchButton,
   addBooking,
+  addBookingToAPI,
   viewFilteredResults,
   displayCustomerName,
   displayCustomerBookings,
