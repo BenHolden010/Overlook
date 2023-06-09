@@ -1,5 +1,6 @@
 import { bookingsData, roomsData, customersData, currentCustomer } from "./scripts.js"
 import { roomsAvailableByDate } from "./functions/roomsAvailableByDate.js";
+import { sortByRoomType } from "./functions/sortByRoomType.js";
 
 const headerName = document.querySelector('.header__name');
 const displayBookings = document.querySelector('.main__bookingsDisplay');
@@ -15,14 +16,22 @@ const hide = (names) => {
   names.forEach((name) => name.classList.add('hidden'));
 };
 
-function viewFilteredResults(){
+function viewFilteredResults(event){
   let availableRooms = roomsAvailableByDate(searchInput.value, bookingsData, roomsData)
   if(typeof availableRooms === 'string'){ return alert(availableRooms)}
   hide([displayBookings])
   show([viewSorted])
   viewSorted.innerHTML = ''
+  if (document.getElementById('single room').checked){
+    availableRooms = sortByRoomType('single room', availableRooms)
+  } else if (document.getElementById('junior suite').checked){
+    availableRooms = sortByRoomType('junior suite', availableRooms)
+  } else if (document.getElementById('suite').checked){
+    availableRooms = sortByRoomType('suite', availableRooms)
+  } else if (document.getElementById('residential suite').checked){
+    availableRooms = sortByRoomType('residential suite', availableRooms)
+  }
   availableRooms.forEach(room=>{
-    console.log(room.number)
     viewSorted.innerHTML +=         
     `<button class="filtered__room" id="${room.number}">
     <p class='filtered__text' id="${room.number}">${room.numBeds} ${room.bedSize} bed ${room.roomType}<br>
