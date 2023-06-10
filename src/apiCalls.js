@@ -1,5 +1,9 @@
 // FETCH REQUESTS //
 
+// import { bookingsData } from "./scripts";
+import { displayCustomerBookings } from "./domUpdates";
+import { currentCustomer, bookingsData, roomsData } from "./scripts";
+
 const fetchBookings = fetch(`http://localhost:3001/api/v1/bookings`);
 const fetchRooms = fetch(`http://localhost:3001/api/v1/rooms`);
 const fetchCustomers = fetch(`http://localhost:3001/api/v1/customers`);
@@ -19,7 +23,13 @@ const addBookingToAPI = (userID,date,roomNumber) => {
       console.error('Request failed with status:', response.status)
     }
   })
-  .then(json => console.log(json))
+  
+  .then(data => {
+    bookingsData.push(data.newBooking)
+    displayCustomerBookings(currentCustomer, bookingsData, roomsData)
+    console.log(bookingsData)
+    // console.log(data.newBooking)
+  })
   .catch(err => console.log(err))
 };
 

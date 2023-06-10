@@ -71,13 +71,12 @@ viewSorted.addEventListener('click', event => {
   // addBooking(event){
     // let newBooking = createBooking(currentCustomer, searchInput.value, parseInt(event.target.id))
     // addBookingToAPI(newBooking)
+    // }
     // ==============================
-    console.log(event.target.className === 'make-booking')
   let date = searchInput.value
   let roomNumber = Number(event.target.id)
   if(event.target.className === 'make-booking'){
    addBookingToAPI(currentCustomer.id,date,roomNumber)
-  // }
     }})
 
 
