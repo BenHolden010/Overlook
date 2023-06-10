@@ -44,7 +44,6 @@ function viewFilteredResults(event){
 }
 
 function displayCustomerName(currentCustomer){
-  console.log('hello!!')
 headerName.innerText = "Welcome " + currentCustomer.name + "!"
 }
 

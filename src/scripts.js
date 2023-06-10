@@ -45,12 +45,11 @@ window.addEventListener('load', () => {
               roomsData = data.rooms;
             } else if (response.url.includes('/customers')) {
               customersData = data.customers;
-              // console.log(customersData)
               currentCustomer = customersData[1]
+              // currentCustomer = authenticateCustomer(event)
+              // console.log(customersData)
               displayCustomerName(currentCustomer)
               displayCustomerBookings(currentCustomer, bookingsData, roomsData)
-              // currentCustomer = createRandomCustomer(customersData)
-              // displayBookings(currentCustomer, bookingsData, savedbookings)
             }
           })
           .catch(error => {
@@ -71,7 +70,7 @@ viewSorted.addEventListener('click', event => {
   let date = searchInput.value
   let roomNumber = Number(event.target.id)
   if(event.target.className === 'make-booking'){
-   addBookingToAPI(currentCustomer.id,date,roomNumber)
+   addBookingToAPI(currentCustomer.id,date,roomNumber, event)
     }})
 
 
