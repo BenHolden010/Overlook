@@ -1,7 +1,7 @@
 // FETCH REQUESTS //
 
 // import { bookingsData } from "./scripts";
-import { displayCustomerBookings } from "./domUpdates";
+import { displayCustomerBookings, viewFilteredResults } from "./domUpdates";
 import { currentCustomer, bookingsData, roomsData } from "./scripts";
 
 const fetchBookings = fetch(`http://localhost:3001/api/v1/bookings`);
@@ -27,6 +27,7 @@ const addBookingToAPI = (userID,date,roomNumber) => {
   .then(data => {
     bookingsData.push(data.newBooking)
     displayCustomerBookings(currentCustomer, bookingsData, roomsData)
+    viewFilteredResults(event)
     console.log(bookingsData)
     // console.log(data.newBooking)
   })

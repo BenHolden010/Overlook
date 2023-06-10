@@ -25,8 +25,6 @@ const hide = (names) => {
 function viewFilteredResults(event){
   let availableRooms = roomsAvailableByDate(searchInput.value, bookingsData, roomsData)
   if(typeof availableRooms === 'string'){ return alert(availableRooms)}
-  // hide([displayBookings])
-  // show([viewSorted])
   viewSorted.innerHTML = ''
   roomsData.forEach(room=>{
     if (document.getElementById(room.roomType).checked){
@@ -65,6 +63,7 @@ function displayCustomerBookings(currentCustomer, bookingsData, roomsData){
 
 function addBooking(event){
   let newBooking = createBooking(currentCustomer, searchInput.value, parseInt(event.target.id))
+  addBookingToAPI(newBooking)
 }
 
 function totalAmount(customer, bookings, rooms){
