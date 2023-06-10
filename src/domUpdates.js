@@ -25,8 +25,8 @@ const hide = (names) => {
 function viewFilteredResults(event){
   let availableRooms = roomsAvailableByDate(searchInput.value, bookingsData, roomsData)
   if(typeof availableRooms === 'string'){ return alert(availableRooms)}
-  hide([displayBookings])
-  show([viewSorted])
+  // hide([displayBookings])
+  // show([viewSorted])
   viewSorted.innerHTML = ''
   roomsData.forEach(room=>{
     if (document.getElementById(room.roomType).checked){
@@ -59,7 +59,7 @@ function displayCustomerBookings(currentCustomer, bookingsData, roomsData){
       `${booking.date} in room number ${booking.roomNumber}<br>`
     }
   })
-  displayBookings.innerHTML += `Total cost of your stay is $${total}`
+  displayBookings.innerHTML += `Total cost of your stay is $${total.toFixed(2)}`
 }
 
 function addBooking(event){

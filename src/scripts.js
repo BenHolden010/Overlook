@@ -68,7 +68,11 @@ searchButton.addEventListener('click', event => {
   viewFilteredResults(event)})
 
 viewSorted.addEventListener('click', event => {
-    // console.log(event.target.className === 'make-booking')
+  // addBooking(event){
+    // let newBooking = createBooking(currentCustomer, searchInput.value, parseInt(event.target.id))
+    // addBookingToAPI(newBooking)
+    // ==============================
+    console.log(event.target.className === 'make-booking')
   let date = searchInput.value
   let roomNumber = Number(event.target.id)
   if(event.target.className === 'make-booking'){
