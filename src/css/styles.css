@@ -13,6 +13,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: rgb(210, 71, 210);
+  border-radius: 1em;
 }
 
 .header__turingLogo {
