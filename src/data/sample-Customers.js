@@ -1,4 +1,4 @@
-let customers = [
+let sampleCustomers = [
   {
     "id": 1,
     "name": "Leatha Ullrich"
@@ -200,3 +200,5 @@ let customers = [
     "name": "Eldridge Muller"
     }
 ]
+
+export { sampleCustomers }

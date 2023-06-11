@@ -12,14 +12,17 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import { 
   fetchBookings, 
   fetchRooms, 
-  fetchCustomers 
+  fetchCustomers,
+  addBookingToAPI,
 } from './apiCalls';
 
 import {
+  viewSorted,
   searchButton,
   viewFilteredResults,
   displayCustomerBookings,
-  displayCustomerName
+  displayCustomerName,
+  searchInput,
 } from './domUpdates.js';
 
 // Fetched Data
@@ -42,12 +45,11 @@ window.addEventListener('load', () => {
               roomsData = data.rooms;
             } else if (response.url.includes('/customers')) {
               customersData = data.customers;
+              currentCustomer = customersData[1]
+              // currentCustomer = authenticateCustomer(event)
               // console.log(customersData)
-              currentCustomer = customersData[2]
               displayCustomerName(currentCustomer)
               displayCustomerBookings(currentCustomer, bookingsData, roomsData)
-              // currentCustomer = createRandomCustomer(customersData)
-              // displayBookings(currentCustomer, bookingsData, savedbookings)
             }
           })
           .catch(error => {
@@ -61,10 +63,20 @@ window.addEventListener('load', () => {
   });
 });
 
-searchButton.addEventListener('click', function (event) {
+searchButton.addEventListener('click', event => {
   viewFilteredResults(event)})
 
+viewSorted.addEventListener('click', event => {
+  let date = searchInput.value
+  let roomNumber = Number(event.target.id)
+  if(event.target.className === 'make-booking'){
+   addBookingToAPI(currentCustomer.id,date,roomNumber, event)
+    }})
+
+
+
 export {
+addBookingToAPI,
 bookingsData,
 roomsData,
 customersData,
