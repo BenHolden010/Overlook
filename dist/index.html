@@ -10,9 +10,7 @@
   <header class="header">
     <img class="header__turingLogo" src="./images/turing-logo.png" alt="turing logo">
     <h1 class="header__title">The Overlook Resort</h1>
-    <div>
-      <section class="header__name"></section>
-    </div>
+    <section class="header__name"></section>
   </header>
   <section class="login-page">
     <h2>Overlook Account Login</h2>
@@ -33,8 +31,7 @@
         <h2>Check Availavility:</h2>
         <label class="input-section">
           <h3>Select a date:</h3>
-          <input class="home__searchInput" type="search" name="s" placeholder="YYYY/MM/DD" required="">
-          
+          <input class="home__searchInput" type="date" id="pick-day" name="trip-day" aria-label="pick-day" placeholder="YYYY/MM/DD" min="2017/05/21" max="2024/06/01">
         </label>
         <section class="radio-section">
           <h3>Select a room type:</h3>
@@ -56,7 +53,7 @@
         </section>
       </section>
       <button class="search-button">Search 🔍</button>
-      <section class="filter-bookings-Display">
+      <section class="filter-bookings-Display hidden">
         <!-- bookings will display here -->
       </section>
     </div>

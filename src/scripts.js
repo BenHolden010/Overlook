@@ -65,7 +65,7 @@ loginButton.addEventListener('click', () => {
   loginUser(customersData)})
 
 viewSorted.addEventListener('click', event => {
-  let date = searchInput.value
+  let date = searchInput.value.split('-').join('/')
   let roomNumber = Number(event.target.id)
   if(event.target.className === 'make-booking'){
    addBookingToAPI(currentCustomer.id,date,roomNumber, event)

@@ -47,9 +47,11 @@ const hide = (names) => {
 };
 
 function viewFilteredResults(){
-  let availableRooms = roomsAvailableByDate(searchInput.value, bookingsData, roomsData)
+  show([viewSorted])
+  let availableRooms = roomsAvailableByDate(searchInput.value.split('-').join('/'), bookingsData, roomsData)
   if(typeof availableRooms === 'string'){ 
     viewSorted.innerHTML = ''
+    hide([viewSorted])
     return alert(availableRooms)
   }
   viewSorted.innerHTML = ''
@@ -78,7 +80,7 @@ function displayCustomerBookings(currentCustomer, bookingsData, roomsData){
   displayBookings.innerHTML = ''
   let total = totalAmount(currentCustomer, bookingsData, roomsData)
   displayBookings.innerHTML = `Your Bookings are listed below:<br>`
-  bookingsData.forEach(booking=>{
+  bookingsData.forEach(booking=>{ 
     if (currentCustomer.id === booking.userID){
       displayBookings.innerHTML += 
       `${booking.date} in room number ${booking.roomNumber}<br>`
