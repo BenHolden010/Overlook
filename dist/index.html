@@ -7,29 +7,38 @@
   <title>Webpack Starter Kit</title>
 </head>
 <body>
-  <section class="header">
+  <header class="header">
     <img class="header__turingLogo" src="./images/turing-logo.png" alt="turing logo">
     <h1 class="header__title">The Overlook Resort</h1>
     <div>
       <section class="header__name"></section>
     </div>
-  </section>
+  </header>
   <section  class="main">
     <div class="dashboard-display">
       <section class="main__filter">
         <h2>Check Availavility:</h2>
-        <section class="'input-section">
-          <h3>Select a date:
-            <input class="home__searchInput" type="search" name="s" placeholder="YYYY/MM/DD" required="">
-          </h3>
-        </section>
+        <label class="input-section">
+          <h3>Select a date:</h3>
+          <input class="home__searchInput" type="search" name="s" placeholder="YYYY/MM/DD" required="" alt="date input">
+        </label>
         <section class="radio-section">
           <h3>Select a room type:</h3>
-          <input type='radio' class='single-room' id="single room" name="option">Single Room
-          <input type='radio' class='junior-suite' id="junior suite" name="option">Junior Suite
-          <input type='radio' class='suite' id="suite" name="option">Suite
-          <input type='radio' class='residential-suite' id="residential suite" name="option">Residential Suite
-          <input type='radio' class='view-all' id="view all" name="option" checked>View All
+          <label>
+            <input type='radio' class='view-all' id="view all" name="option" checked>View All
+          </label>
+          <label>
+            <input type='radio' class='junior-suite' id="junior suite" name="option">Junior Suite
+          </label>
+          <label>
+            <input type='radio' class='single-room' id="single room" name="option">Single Room
+          </label>
+          <label>
+            <input type='radio' class='suite' id="suite" name="option">Suite
+          </label>
+          <label>
+            <input type='radio' class='residential-suite' id="residential suite" name="option">Residential Suite
+          </label>
         </section>
       </section>
       <button class="search-button">Search 🔍</button>

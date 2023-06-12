@@ -24,6 +24,11 @@ height: 10vh;
   font-size: 2em;
 }
 
+.input-section {
+display: flex;
+align-items: center;
+}
+
 /* bookings */
 
 .main {
