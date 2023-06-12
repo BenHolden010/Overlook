@@ -1,12 +1,12 @@
 // FETCH REQUESTS //
 
-import { displayCustomerBookings, viewFilteredResults } from "./domUpdates";
-import { currentCustomer, bookingsData, roomsData } from "./scripts";
+import { currentCustomer, displayCustomerBookings, viewFilteredResults } from "./domUpdates";
+import { bookingsData, roomsData } from "./scripts";
 
 const fetchBookings = fetch(`http://localhost:3001/api/v1/bookings`);
 const fetchRooms = fetch(`http://localhost:3001/api/v1/rooms`);
 const fetchCustomers = fetch(`http://localhost:3001/api/v1/customers`);
-const addBookingToAPI = ( userID, date, roomNumber, event) => {
+const addBookingToAPI = ( userID, date, roomNumber) => {
   fetch(`http://localhost:3001/api/v1/bookings`, {
     method: 'POST',
     body: JSON.stringify({ "userID": userID, "date": date, "roomNumber": roomNumber }),
@@ -26,7 +26,7 @@ const addBookingToAPI = ( userID, date, roomNumber, event) => {
   .then(data => {
     bookingsData.push(data.newBooking)
     displayCustomerBookings(currentCustomer, bookingsData, roomsData)
-    viewFilteredResults(event)
+    viewFilteredResults()
   })
   .catch(err => console.log(err))
 };

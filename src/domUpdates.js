@@ -1,9 +1,10 @@
-import { bookingsData, roomsData, customersData, currentCustomer } from "./scripts.js"
+import { bookingsData, roomsData, customersData } from "./scripts.js"
 import { roomsAvailableByDate } from "./functions/roomsAvailableByDate.js";
 import { sortByRoomType } from "./functions/sortByRoomType.js";
 import { createBooking } from "./functions/createBooking.js";
 import { addBookingToAPI } from './apiCalls';
 
+let currentCustomer = {}
 // querySelectors
 
 const headerName = document.querySelector('.header__name');
@@ -11,8 +12,31 @@ const displayBookings = document.querySelector('.main__bookingsDisplay');
 const viewSorted = document.querySelector('.filter-bookings-Display');
 const searchButton = document.querySelector('.search-button');
 const searchInput = document.querySelector('.home__searchInput');
+const nameInput = document.querySelector('.name-input');
+const passwordInput = document.querySelector('.password-input');
+const loginButton = document.querySelector('.login-button');
+const loginError = document.querySelector('.login-error');
+const main = document.querySelector('.main');
+const loginPage = document.querySelector('.login-page');
 
 // functions
+
+const loginUser = (customersData) => {
+  customersData.forEach(customer=>{
+    if (`customer${customer.id}` === nameInput.value && passwordInput.value === 'overlook2021'){
+      hide([loginPage])
+      show([main])
+      currentCustomer = customer
+      console.log(currentCustomer)
+      displayCustomerName(currentCustomer)
+      displayCustomerBookings(currentCustomer, bookingsData, roomsData)
+    return currentCustomer
+    } else {
+      loginError.innerText = 'The username or password you entered is incorrect.'
+    }
+  })
+  return currentCustomer
+}
 
 const show = (names) => {
   names.forEach((name) => name.classList.remove('hidden'));
@@ -22,7 +46,7 @@ const hide = (names) => {
   names.forEach((name) => name.classList.add('hidden'));
 };
 
-function viewFilteredResults(event){
+function viewFilteredResults(){
   let availableRooms = roomsAvailableByDate(searchInput.value, bookingsData, roomsData)
   if(typeof availableRooms === 'string'){ return alert(availableRooms)}
   viewSorted.innerHTML = ''
@@ -44,7 +68,7 @@ function viewFilteredResults(event){
 }
 
 function displayCustomerName(currentCustomer){
-headerName.innerText = "Welcome " + currentCustomer.name + "!"
+headerName.innerText = "Welcome " + currentCustomer.name + "to the Overlook Resort and Spa"
 }
 
 function displayCustomerBookings(currentCustomer, bookingsData, roomsData){
@@ -78,9 +102,12 @@ function totalAmount(customer, bookings, rooms){
 }
 
 export {
+  currentCustomer,
+  loginButton,
   searchInput,
   viewSorted,
   searchButton,
+  loginUser,
   addBooking,
   addBookingToAPI,
   viewFilteredResults,
