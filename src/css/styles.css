@@ -1,6 +1,3 @@
-*{
-  /* border: solid red 2px ; */
-}
 
 body {
   /* background: rgb(225, 197, 197); */
@@ -75,7 +72,7 @@ height: fit-content;
   flex-wrap: wrap;
   justify-content: space-around;
   overflow: auto;
-  height: 65vh;
+  height: 50vh;
   background: rgb(255 255 255 / 70%);
   border-radius: 0.5em;
 }

@@ -1,8 +1,8 @@
 import { bookingsData, roomsData } from "./scripts.js"
 import { roomsAvailableByDate } from "./functions/roomsAvailableByDate.js";
 import { sortByRoomType } from "./functions/sortByRoomType.js";
-import { createBooking } from "./functions/createBooking.js";
 import { addBookingToAPI } from './apiCalls';
+import { totalAmount } from "./functions/totalAmount.js";
 
 let currentCustomer = {}
 // querySelectors
@@ -87,23 +87,6 @@ function displayCustomerBookings(currentCustomer, bookingsData, roomsData){
   displayBookings.innerHTML += `Total cost of your stay is $${total.toFixed(2)}`
 }
 
-function addBooking(event){
-  let newBooking = createBooking(currentCustomer, searchInput.value, parseInt(event.target.id))
-  addBookingToAPI(newBooking)
-}
-
-function totalAmount(customer, bookings, rooms){
-  let total = bookings.filter(booking=> customer.id === booking.userID).reduce((acc, booking)=>{
-    rooms.forEach(room=>{
-      if (booking.roomNumber===room.number){
-        acc+=room.costPerNight
-      }
-    })
-      return acc
-    },0)
-  return total
-}
-
 export {
   currentCustomer,
   loginButton,
@@ -111,7 +94,6 @@ export {
   viewSorted,
   searchButton,
   loginUser,
-  addBooking,
   addBookingToAPI,
   viewFilteredResults,
   displayCustomerName,
