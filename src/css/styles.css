@@ -1,9 +1,15 @@
-/* *{
-  border: solid red 2px ;
-} */
+*{
+  /* border: solid red 2px ; */
+  /* background-image: url("/images/bora-bora.png"); */
+  /* background-repeat: no-repeat;
+  background-size: cover; */
+}
 
 body {
   background: rgb(225, 197, 197);
+  /* background-image: url("/images/bora-bora.png");
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
 
 /* header section */

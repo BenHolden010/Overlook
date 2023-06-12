@@ -6,6 +6,7 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
+import './images/bora-bora.png'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -23,8 +24,6 @@ import {
   viewSorted,
   searchButton,
   viewFilteredResults,
-  displayCustomerBookings,
-  displayCustomerName,
   searchInput,
 } from './domUpdates.js';
 
@@ -33,7 +32,6 @@ import {
 let bookingsData = [];
 let roomsData = [];
 let customersData = [];
-// let currentCustomer = {};
 
 window.addEventListener('load', () => {
   Promise.all([fetchBookings, fetchRooms, fetchCustomers])
@@ -48,11 +46,6 @@ window.addEventListener('load', () => {
               roomsData = data.rooms;
             } else if (response.url.includes('/customers')) {
               customersData = data.customers;
-              // currentCustomer = customersData[1]
-              // currentCustomer = authenticateCustomer(event)
-              // console.log(customersData)
-              // displayCustomerName(currentCustomer)
-              // displayCustomerBookings(currentCustomer, bookingsData, roomsData)
             }
           })
           .catch(error => {
@@ -86,5 +79,4 @@ addBookingToAPI,
 bookingsData,
 roomsData,
 customersData,
-// currentCustomer
 }

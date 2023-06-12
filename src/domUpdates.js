@@ -1,4 +1,4 @@
-import { bookingsData, roomsData, customersData } from "./scripts.js"
+import { bookingsData, roomsData } from "./scripts.js"
 import { roomsAvailableByDate } from "./functions/roomsAvailableByDate.js";
 import { sortByRoomType } from "./functions/sortByRoomType.js";
 import { createBooking } from "./functions/createBooking.js";
@@ -48,7 +48,10 @@ const hide = (names) => {
 
 function viewFilteredResults(){
   let availableRooms = roomsAvailableByDate(searchInput.value, bookingsData, roomsData)
-  if(typeof availableRooms === 'string'){ return alert(availableRooms)}
+  if(typeof availableRooms === 'string'){ 
+    viewSorted.innerHTML = ''
+    return alert(availableRooms)
+  }
   viewSorted.innerHTML = ''
   roomsData.forEach(room=>{
     if (document.getElementById(room.roomType).checked){
