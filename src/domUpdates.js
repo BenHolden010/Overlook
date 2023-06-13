@@ -27,7 +27,6 @@ const loginUser = (customersData) => {
       hide([loginPage])
       show([main])
       currentCustomer = customer
-      console.log(currentCustomer)
       displayCustomerName(currentCustomer)
       displayCustomerBookings(currentCustomer, bookingsData, roomsData)
     return currentCustomer
