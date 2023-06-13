@@ -17,11 +17,12 @@ import {
 } from './apiCalls';
 
 import {
+  currentCustomer,
+  loginButton,
+  loginUser,
   viewSorted,
   searchButton,
   viewFilteredResults,
-  displayCustomerBookings,
-  displayCustomerName,
   searchInput,
 } from './domUpdates.js';
 
@@ -30,7 +31,6 @@ import {
 let bookingsData = [];
 let roomsData = [];
 let customersData = [];
-let currentCustomer = {};
 
 window.addEventListener('load', () => {
   Promise.all([fetchBookings, fetchRooms, fetchCustomers])
@@ -45,11 +45,6 @@ window.addEventListener('load', () => {
               roomsData = data.rooms;
             } else if (response.url.includes('/customers')) {
               customersData = data.customers;
-              currentCustomer = customersData[1]
-              // currentCustomer = authenticateCustomer(event)
-              // console.log(customersData)
-              displayCustomerName(currentCustomer)
-              displayCustomerBookings(currentCustomer, bookingsData, roomsData)
             }
           })
           .catch(error => {
@@ -66,8 +61,11 @@ window.addEventListener('load', () => {
 searchButton.addEventListener('click', event => {
   viewFilteredResults(event)})
 
+loginButton.addEventListener('click', () => {
+  loginUser(customersData)})
+
 viewSorted.addEventListener('click', event => {
-  let date = searchInput.value
+  let date = searchInput.value.split('-').join('/')
   let roomNumber = Number(event.target.id)
   if(event.target.className === 'make-booking'){
    addBookingToAPI(currentCustomer.id,date,roomNumber, event)
@@ -80,5 +78,4 @@ addBookingToAPI,
 bookingsData,
 roomsData,
 customersData,
-currentCustomer
 }
