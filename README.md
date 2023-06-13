@@ -1,99 +1,77 @@
-# Webpack Starter Kit
+# The Overlook Resort
 
-## Clone This Repo
+The details of this project are outlined in the project specs
+- [Project Specs](https://frontend.turing.edu/projects/overlook.html)
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## Contributors
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+- [Benjamin Holden](https://github.com/BenHolden010)
 
-Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+## Description
 
-## Setup
+"The Overlook Resort" is a solo project completed as part of Module 2 at Turing School of Software Design's Front-End curriculum. The application hosts a variety of bookings that can be viewed as a whole or by room type (Junior Suite, Single Room, Suite, Residential Suite). When looking at the user dashboard all bookings will be displayed fo that user and new Bookings can be saved to the dashboard.
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
+## LEARNING GOALS
 
-Then install the library dependencies. Run:
+- Use object and array prototype methods to perform data manipulation
+- Create a user interface that is easy to use and clearly displays information.
+- Write DRY, reusable code that follows SRP and trends toward function purity
+- Implement a robust testing suite using TDD
+- Make network requests to retrieve data
+- Understand the use of new technologies introduced in this project:
+  -  WebPack
+  -  Fetch API
+- Work with a local server and make network requests to API endpoints to retrieve and manipulate data.
+- Follow best practices for accessibility
+- Implement feedback from a usability test to improve product
 
-```bash
-npm install
-```
+## TECHNOLOGIES USED
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+- JavaScript 
+- HTML
+- CSS 
+- Npm
+- Mocha 
+- Chai
+- Git 
+- WebPack
+- Fetch API
 
-## Where to Add Your Code
+## App Preview
+![Screenshot 2023-06-13 at 8 32 15 AM](https://github.com/BenHolden010/Overlook/assets/126317930/39a0d50d-7e96-4bfc-9460-7a8d4e7c646e)
+ video: https://www.loom.com/share/2ab70c879e1e46d291f0306b5738f5ff?sid=94cb4c0a-22ca-4eaa-a077-f4f9ca1e6df9
 
-### JavaScript
+## FEATURES
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
+- radio buttons that filter bookings by room type.
+- Search bar that filters recipes by name or tag
+- Individual bookings can be saved by a user to a collection of saved bookings 
+- User is logged in on login page.
+- User page that displays all saved bookings
+- User can filter bookings using search bar
+- User can add bookings to their saved bookings
+- A local server that provides the APIs for the data on the page
 
-**Create all of your feature code files in the `src` directory.**
+## APP SET UP/INSTALLATION
 
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
+1. Fork this repository [here](https://github.com/BenHolden010/Overlook)
+2. Clone down your new, forked repo
+3. cd into the repository
+4. Open it in your text editor
+5. run `npm install`
+6. View the project in the browser by running `npm start` in your terminal, and `cmd + click` on the link generated
 
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
+## LOCAL SERVER SET UP 
+In a separate terminal:
+1. Clone [this repository](https://github.com/turingschool-examples/overlook-api) 
+1. Run `npm install`
+1. Run `npm start`
 
-### HTML
+## Testing
 
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
+This project utilized Test Driven Development practices.
+Mocha (testing framework) and Chai (assertion library) are required to run tests,
+once installed and running: 
+-cd into the repo
+-run `npm test` in the terminal
 
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
